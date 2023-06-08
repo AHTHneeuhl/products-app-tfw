@@ -9,7 +9,7 @@ export const products = createSlice({
   name: "products",
   initialState,
   reducers: {
-    addProducts: (state, action: PayloadAction<TProduct[]>) => {
+    setProducts: (state, action: PayloadAction<TProduct[]>) => {
       return {
         ...state,
         products: action.payload,
@@ -17,5 +17,7 @@ export const products = createSlice({
     },
   },
 });
+
+export const { setProducts } = products.actions;
 
 export default products.reducer;
