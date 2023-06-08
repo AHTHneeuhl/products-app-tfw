@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 import { theme } from "theme";
 
 const ProductCard = styled.div`
-  width: 274px;
   padding: 1rem;
   border-radius: 0.75rem;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
@@ -111,7 +110,7 @@ const AddToCartButton = styled.button`
   background: ${theme.colors.black};
   color: ${theme.colors.milk};
   font-family: ${theme.fonts.poppins};
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 5rem;
   font-weight: 500;
   border: unset;

@@ -1,6 +1,15 @@
-import { Categories, ProductSort, Products } from "components/Product";
+import {
+  Categories,
+  ProductFilter,
+  ProductSort,
+  Products,
+} from "components/Product";
 import { Navigation } from "components/common";
-import { SidebarWrapper } from "./Product.styles";
+import {
+  ContentWrapper,
+  SidebarWrapper,
+  SortAndFilter,
+} from "./Product.styles";
 
 const Product: React.FC = () => {
   return (
@@ -9,10 +18,13 @@ const Product: React.FC = () => {
         <Navigation />
         <Categories />
       </SidebarWrapper>
-      <div>
-        <ProductSort />
+      <ContentWrapper>
+        <SortAndFilter>
+          <ProductSort />
+          <ProductFilter />
+        </SortAndFilter>
         <Products />
-      </div>
+      </ContentWrapper>
     </div>
   );
 };
