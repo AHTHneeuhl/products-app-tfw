@@ -1,3 +1,4 @@
+import { useNotification } from "hooks";
 import {
   AddToCartButton,
   FlexBetween,
@@ -36,6 +37,16 @@ const Product: React.FC<TProps> = ({
   category,
   thumbnail,
 }) => {
+  const { notifySuccess } = useNotification();
+
+  const handleBuy = () => {
+    if (stock <= 50) {
+      notifySuccess("Hurry! only a few items left!");
+    } else {
+      notifySuccess("Buying...");
+    }
+  };
+
   return (
     <ProductCard>
       <ProductThumbnail src={thumbnail} alt={title} />
@@ -64,7 +75,10 @@ const Product: React.FC<TProps> = ({
           <span>Current Discounts</span>
         </ProductDiscount>
       </FlexBetween>
-      <AddToCartButton>Add to Cart</AddToCartButton>
+      <FlexBetween>
+        <AddToCartButton>Add to Cart</AddToCartButton>
+        <AddToCartButton onClick={handleBuy}>Buy</AddToCartButton>
+      </FlexBetween>
     </ProductCard>
   );
 };

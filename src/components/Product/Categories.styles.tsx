@@ -5,7 +5,7 @@ const CategoriesWrapper = styled.div`
   background-color: ${theme.colors.white};
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
   padding: 1rem;
-  height: 76vh;
+  height: 80vh;
   width: 216px;
   border-radius: 0.75rem;
   overflow: auto;
