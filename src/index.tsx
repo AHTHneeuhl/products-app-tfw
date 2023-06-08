@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
@@ -7,7 +8,8 @@ import appStore from "redux/store";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, theme } from "theme";
 import App from "./App";
-import "./index.css";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,30 +18,32 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={appStore}>
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <App />
-        </ThemeProvider>
-        <Toaster
-          position="top-center"
-          toastOptions={{
-            duration: 3000,
-            success: {
-              style: {
-                background: "green",
-                color: "white",
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <App />
+          </ThemeProvider>
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              duration: 3000,
+              success: {
+                style: {
+                  background: "green",
+                  color: "white",
+                },
               },
-            },
-            error: {
-              style: {
-                background: "red",
-                color: "white",
+              error: {
+                style: {
+                  background: "red",
+                  color: "white",
+                },
               },
-            },
-          }}
-        />
-      </BrowserRouter>
+            }}
+          />
+        </BrowserRouter>
+      </QueryClientProvider>
     </Provider>
   </React.StrictMode>
 );
