@@ -1,7 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { productApi } from "api";
+import { getCategories } from "helpers/getCategories";
 import { createContext, useEffect } from "react";
-import { setProducts } from "redux/slices/products";
+import { setCategories, setProducts } from "redux/slices/products";
 import { useAppDispatch } from "redux/store/hooks";
 
 export const AppContext = createContext<null>(null);
@@ -11,7 +12,10 @@ const AppProvider = (props: React.PropsWithChildren<{}>) => {
 
   const { mutate } = useMutation(["products"], productApi, {
     onSuccess: (data) => {
-      if (data) dispatch(setProducts(data.products));
+      if (data) {
+        dispatch(setProducts(data.products));
+        dispatch(setCategories(getCategories(data.products)));
+      }
     },
   });
 

@@ -4,7 +4,6 @@ import Product from "./Product";
 
 const Products: React.FC = () => {
   const products = useAppSelector((state) => state.products.products);
-  console.log(products);
 
   if (!products) return null;
 

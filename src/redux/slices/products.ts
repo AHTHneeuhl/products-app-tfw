@@ -3,6 +3,7 @@ import { TProduct } from "types";
 
 const initialState = {
   products: [] as TProduct[],
+  categories: ["all"] as string[],
 };
 
 export const products = createSlice({
@@ -15,9 +16,15 @@ export const products = createSlice({
         products: action.payload,
       };
     },
+    setCategories: (state, action: PayloadAction<string[]>) => {
+      return {
+        ...state,
+        categories: [...state.categories, ...action.payload],
+      };
+    },
   },
 });
 
-export const { setProducts } = products.actions;
+export const { setProducts, setCategories } = products.actions;
 
 export default products.reducer;
