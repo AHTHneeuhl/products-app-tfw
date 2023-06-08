@@ -1,4 +1,6 @@
 import {
+  AddToCartButton,
+  FlexBetween,
   ProductAmount,
   ProductBrand,
   ProductCard,
@@ -37,14 +39,32 @@ const Product: React.FC<TProps> = ({
   return (
     <ProductCard>
       <ProductThumbnail src={thumbnail} alt={title} />
-      <ProductBrand>{brand}</ProductBrand>
-      <ProductCategory>{category}</ProductCategory>
-      <ProductDescription>{description}</ProductDescription>
       <ProductTitle>{title}</ProductTitle>
-      <ProductAmount>${price}</ProductAmount>
-      <ProductStock>{stock}</ProductStock>
-      <ProductDiscount>{discountPercentage}%</ProductDiscount>
-      <ProductRating>{rating}</ProductRating>
+      <ProductDescription>{description}</ProductDescription>
+      <FlexBetween>
+        <ProductCategory>{category}</ProductCategory>
+        <ProductBrand>{brand}</ProductBrand>
+      </FlexBetween>
+      <FlexBetween>
+        <ProductRating>
+          {rating} <br />
+          <span>Ratings</span>
+        </ProductRating>
+        <ProductStock>
+          {stock} <br />
+          <span>Available Stack</span>
+        </ProductStock>
+      </FlexBetween>
+      <FlexBetween>
+        <ProductAmount>
+          <span>Price</span> <br />${price}
+        </ProductAmount>
+        <ProductDiscount>
+          {discountPercentage}% <br />
+          <span>Current Discounts</span>
+        </ProductDiscount>
+      </FlexBetween>
+      <AddToCartButton>Add to Cart</AddToCartButton>
     </ProductCard>
   );
 };
