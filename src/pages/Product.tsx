@@ -1,11 +1,14 @@
 import { Categories, ProductSort, Products } from "components/Product";
+import { Navigation } from "components/common";
+import { SidebarWrapper } from "./Product.styles";
 
 const Product: React.FC = () => {
   return (
     <div style={{ display: "flex", gap: "1.5rem" }}>
-      <div>
+      <SidebarWrapper>
+        <Navigation />
         <Categories />
-      </div>
+      </SidebarWrapper>
       <div>
         <ProductSort />
         <Products />
