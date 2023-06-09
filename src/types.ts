@@ -12,6 +12,10 @@ export interface TProduct {
   images: string[];
 }
 
+export interface TCartProduct extends TProduct {
+  quantity: number;
+}
+
 export type TBrand =
   | "Apple"
   | "Samsung"

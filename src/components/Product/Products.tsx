@@ -21,9 +21,11 @@ const Products: React.FC = () => {
           thumbnail,
           description,
           discountPercentage,
+          images,
         }) => (
           <Product
             key={id}
+            id={id}
             title={title}
             price={price}
             brand={brand}
@@ -33,6 +35,7 @@ const Products: React.FC = () => {
             thumbnail={thumbnail}
             description={description}
             discountPercentage={discountPercentage}
+            images={images}
           />
         )
       )}
