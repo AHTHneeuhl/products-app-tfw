@@ -5,6 +5,7 @@ import { theme } from "theme";
 const NavigationWrapper = styled.div`
   background-color: ${theme.colors.white};
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
+  width: 216px;
   padding: 1rem;
   border-radius: 0.75rem;
 

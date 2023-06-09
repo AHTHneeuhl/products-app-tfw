@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import { ProductPage } from "pages";
+import { CartPage, ProductPage } from "pages";
 
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<ProductPage />} />
+      <Route path="/cart" element={<CartPage />} />
     </Routes>
   );
 };

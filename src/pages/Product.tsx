@@ -6,6 +6,7 @@ import {
 } from "components/Product";
 import { Navigation } from "components/common";
 import {
+  Container,
   ContentWrapper,
   SidebarWrapper,
   SortAndFilter,
@@ -13,7 +14,7 @@ import {
 
 const Product: React.FC = () => {
   return (
-    <div style={{ display: "flex", gap: "1.5rem" }}>
+    <Container>
       <SidebarWrapper>
         <Navigation />
         <Categories />
@@ -25,7 +26,7 @@ const Product: React.FC = () => {
         </SortAndFilter>
         <Products />
       </ContentWrapper>
-    </div>
+    </Container>
   );
 };
 

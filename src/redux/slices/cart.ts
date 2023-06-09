@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TCartProduct, TProduct } from "types";
 
 const initialState = {
-  cart: [] as TCartProduct[],
+  items: [] as TCartProduct[],
 };
 
 export const cart = createSlice({
@@ -10,7 +10,7 @@ export const cart = createSlice({
   initialState,
   reducers: {
     setItemToCart: (state, action: PayloadAction<TProduct>) => {
-      const updatedCart = state.cart.map((item: TCartProduct) => {
+      const updatedCart = state.items.map((item: TCartProduct) => {
         if (item.id === action.payload.id) {
           return {
             ...item,
@@ -21,7 +21,7 @@ export const cart = createSlice({
         return item;
       });
 
-      const existingItem = state.cart.find(
+      const existingItem = state.items.find(
         (item: TCartProduct) => item.id === action.payload.id
       );
 
@@ -34,11 +34,60 @@ export const cart = createSlice({
 
       return {
         ...state,
-        cart: updatedCart,
+        items: updatedCart,
+      };
+    },
+    incrementQuantity: (state, action: PayloadAction<number>) => {
+      const updatedItems = state.items.map((item: TCartProduct) => {
+        if (item.id === action.payload) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        items: updatedItems,
+      };
+    },
+    decrementQuantity: (state, action: PayloadAction<number>) => {
+      const updatedItems = state.items.map((item: TCartProduct) => {
+        if (item.id === action.payload) {
+          return {
+            ...item,
+            quantity: item.quantity > 1 ? item.quantity - 1 : 0,
+          };
+        }
+        return item;
+      });
+
+      const filteredItems = updatedItems.filter(
+        (item: TCartProduct) => item.quantity > 0
+      );
+
+      return {
+        ...state,
+        items: filteredItems,
+      };
+    },
+    deleteCartItem: (state, action: PayloadAction<number>) => {
+      return {
+        ...state,
+        items: state.items.filter(
+          (item: TCartProduct) => item.id !== action.payload
+        ),
       };
     },
   },
 });
 
-export const { setItemToCart } = cart.actions;
+export const {
+  setItemToCart,
+  incrementQuantity,
+  decrementQuantity,
+  deleteCartItem,
+} = cart.actions;
+
 export default cart.reducer;
