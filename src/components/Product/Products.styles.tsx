@@ -8,6 +8,7 @@ const ProductList = styled.div`
   padding-left: 0.75rem;
 
   height: 88vh;
+  min-width: 1024px;
   overflow-y: auto;
   overflow-x: hidden;
 `;

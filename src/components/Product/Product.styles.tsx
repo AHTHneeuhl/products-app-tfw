@@ -5,6 +5,7 @@ const ProductCard = styled.div`
   padding: 1rem;
   border-radius: 0.75rem;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
+  max-width: 272px;
 
   display: flex;
   flex-direction: column;

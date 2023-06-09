@@ -1,5 +1,10 @@
 import { styled } from "styled-components";
 
+const Container = styled.div`
+  display: flex;
+  gap: 1.5rem;
+`;
+
 const ContentWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -20,6 +25,7 @@ const SortAndFilter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
 `;
 
-export { SidebarWrapper, SortAndFilter, ContentWrapper };
+export { SidebarWrapper, SortAndFilter, ContentWrapper, Container };
