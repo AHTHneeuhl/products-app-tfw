@@ -7,7 +7,7 @@ const FilterWrapper = styled.div`
   padding: 0.5rem 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 
   display: flex;
   align-items: center;
