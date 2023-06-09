@@ -13,4 +13,15 @@ const ProductList = styled.div`
   overflow-x: hidden;
 `;
 
-export { ProductList };
+const TextContainer = styled.div`
+  display: grid;
+  place-items: center;
+`;
+
+const ContentText = styled.p`
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+`;
+
+export { ProductList, TextContainer, ContentText };

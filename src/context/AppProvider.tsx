@@ -7,12 +7,23 @@ import { setFilteredItems } from "redux/slices/filteredItems";
 import { setBrands, setCategories, setProducts } from "redux/slices/products";
 import { useAppDispatch } from "redux/store/hooks";
 
-export const AppContext = createContext<null>(null);
+export interface TAppContext {
+  handleFetchByCategory: (category: string) => void;
+}
+
+export const AppContext = createContext<TAppContext>({
+  handleFetchByCategory: () => {},
+});
 
 const AppProvider = (props: React.PropsWithChildren<{}>) => {
   const dispatch = useAppDispatch();
 
-  const { mutate } = useMutation(["products"], productApi, {
+  const { mutate: fetchByCategory } = useMutation(
+    ["products"],
+    productApi.byCategory
+  );
+
+  const { mutate } = useMutation(["products"], productApi.all, {
     onSuccess: (data) => {
       if (data) {
         dispatch(setProducts(data.products));
@@ -23,12 +34,26 @@ const AppProvider = (props: React.PropsWithChildren<{}>) => {
     },
   });
 
+  const handleFetchByCategory = (category: string) =>
+    fetchByCategory(
+      { category },
+      {
+        onSuccess: (data) => {
+          if (data) {
+            dispatch(setFilteredItems(data.products));
+          }
+        },
+      }
+    );
+
   useEffect(() => {
     mutate({ limit: 100 });
   }, [mutate]);
 
   return (
-    <AppContext.Provider value={null}>{props.children}</AppContext.Provider>
+    <AppContext.Provider value={{ handleFetchByCategory }}>
+      {props.children}
+    </AppContext.Provider>
   );
 };
 

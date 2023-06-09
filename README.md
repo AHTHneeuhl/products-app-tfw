@@ -9,6 +9,12 @@ yarn install
 yarn start
 ```
 
+Setup environment variables - create `.env.local` file in root directory
+
+```
+REACT_APP_BACKEND_API_URL=https://dummyjson.com
+```
+
 Tech Stack
 
 - ReactJs

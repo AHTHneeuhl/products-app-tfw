@@ -26,6 +26,7 @@ const SortAndFilter = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  min-width: 1024px;
 `;
 
 export { SidebarWrapper, SortAndFilter, ContentWrapper, Container };
