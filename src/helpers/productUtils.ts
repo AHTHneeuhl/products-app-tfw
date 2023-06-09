@@ -15,9 +15,15 @@ export const sortByDiscount = (products: TProduct[]) => {
 };
 
 export const filterByBrand = (products: TProduct[], brand: string) => {
+  if (brand === "all") {
+    return products;
+  }
   return products.filter((product) => product.brand === brand);
 };
 
 export const filterByCategory = (products: TProduct[], category: string) => {
+  if (category === "all") {
+    return products;
+  }
   return products.filter((product) => product.category === category);
 };

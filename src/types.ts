@@ -16,6 +16,11 @@ export interface TCartProduct extends TProduct {
   quantity: number;
 }
 
+export interface TOption {
+  value: string;
+  label: string;
+}
+
 export type TBrand =
   | "Apple"
   | "Samsung"

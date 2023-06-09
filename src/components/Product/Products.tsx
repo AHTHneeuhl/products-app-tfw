@@ -3,7 +3,7 @@ import { ProductList } from "./Products.styles";
 import Product from "./Product";
 
 const Products: React.FC = () => {
-  const products = useAppSelector((state) => state.products.products);
+  const products = useAppSelector((state) => state.filteredItems.itmes);
 
   if (!products) return null;
 
