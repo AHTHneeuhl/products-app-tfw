@@ -1,11 +1,16 @@
 import { useAppSelector } from "redux/store/hooks";
-import { ProductList } from "./Products.styles";
+import { ContentText, ProductList, TextContainer } from "./Products.styles";
 import Product from "./Product";
 
 const Products: React.FC = () => {
   const products = useAppSelector((state) => state.filteredItems.itmes);
 
-  if (!products) return null;
+  if (!products.length)
+    return (
+      <TextContainer>
+        <ContentText>No products found</ContentText>
+      </TextContainer>
+    );
 
   return (
     <ProductList>
